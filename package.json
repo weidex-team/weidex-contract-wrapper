@@ -1,12 +1,22 @@
 {
   "name": "weidex-contract-wrapper",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Wrapper for WeiDex contract.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weichain/weidex-contract-wrapper.git"
   },
   "keywords": [],
   "author": "",
