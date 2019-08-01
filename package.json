@@ -2,8 +2,8 @@
   "name": "weidex-contract-wrapper",
   "version": "1.0.0",
   "description": "Wrapper for WeiDex contract.",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
