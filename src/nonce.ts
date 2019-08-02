@@ -1,8 +1,8 @@
 import { ethers } from 'ethers';
 
 export class Nonce {
-  public static Instance(provider: ethers.providers.Provider, address?: string) {
-    return this.instance || (this.instance = new this(provider, address));
+  public static Instance() {
+    return this.instance || (this.instance = new this());
   }
 
   private static instance: Nonce;
@@ -11,11 +11,14 @@ export class Nonce {
   private firstCall: boolean;
   private nonce: number;
 
-  private constructor(provider: ethers.providers.Provider, address: string) {
-    this.provider = provider;
-    this.address = address;
+  private constructor() {
     this.firstCall = true;
     this.nonce = 0;
+  }
+
+  public init(provider: ethers.providers.Provider, address: string) {
+    this.provider = provider;
+    this.address = address;
   }
 
   public async getNextNonce() {

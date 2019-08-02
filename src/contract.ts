@@ -16,7 +16,8 @@ export class Contract {
     abi: any[] = Config.ABI_EXCHANGE,
   ) {
     this.contract = new ethers.Contract(address, abi, provider);
-    this.nonce = Nonce.Instance(provider, wallet);
+    this.nonce = Nonce.Instance();
+    this.nonce.init(provider, wallet);
   }
 
   public getNonce() {
