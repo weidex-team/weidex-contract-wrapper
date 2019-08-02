@@ -1,12 +1,18 @@
 import { ethers } from 'ethers';
+import Config from '../config';
 import { Contract } from './contract';
 import { IDeposit, IKyberOrder, IOptions, IOrder, IWithdraw } from './types';
 
 export class Exchange {
   private contract: Contract;
 
-  constructor(contract: Contract) {
-    this.contract = contract;
+  constructor(
+    contract?: Contract,
+    wallet?: string,
+    provider?: ethers.providers.Provider,
+    address: string = Config.CONTRACT_ADDRESS,
+  ) {
+    this.contract = contract || new Contract(wallet, provider, address);
   }
 
   public setNewProvider(wallet: string, provider: ethers.providers.Provider) {

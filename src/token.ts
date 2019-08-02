@@ -6,8 +6,8 @@ import { IAllowance, IApprove, IOptions } from './types';
 export class Token {
   private contract: Contract;
 
-  constructor(contract: Contract) {
-    this.contract = contract;
+  constructor(contract?: Contract, wallet?: string, provider?: ethers.providers.Provider, address?: string) {
+    this.contract = contract || new Contract(wallet, provider, address);
   }
 
   public setNewProvider(wallet: string, provider: ethers.providers.Provider, address: string) {
